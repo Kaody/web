@@ -1,7 +1,14 @@
 {
-  "name": "web",
-  "version": "0.1.0",
+  "name": "@tsenamilay/web",
+  "version": "0.0.1",
+  "description": "Tsena Milay's website",
+  "author": {
+    "name": "FANOMEZANTSOA Herifiandry Marc Nico",
+    "email": "ny.kalash@gmail.com",
+    "url": "https://github.com/ks-krimi"
+  },
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
