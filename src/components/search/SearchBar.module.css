@@ -1,0 +1,9 @@
+.box {
+  border-radius: var(--mantine-radius-default);
+  border: 2px solid transparent;
+}
+
+.boxFocused {
+  border-radius: var(--mantine-radius-default);
+  border: 2px solid var(--mantine-primary-color-0);
+}
