@@ -5,6 +5,7 @@ import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import type { Metadata } from "next";
 
 import { ApolloProvider } from "@/components/apollo-provider";
+import { Header } from "@/components/header";
 import { theme } from "@/theme";
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default async function RootLayout({ children }: RootLayout) {
       </head>
       <body>
         <ApolloProvider>
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <MantineProvider theme={theme}>
+            <Header />
+            {children}
+          </MantineProvider>
         </ApolloProvider>
       </body>
     </html>
