@@ -1,0 +1,11 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mantine-spacing-sm);
+  & > a {
+    font-size: var(--mantine-font-size-sm);
+    @mixin hover {
+      text-decoration: underline;
+    }
+  }
+}
