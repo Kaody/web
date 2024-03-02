@@ -1,17 +1,15 @@
 .header {
   display: grid;
+  grid-template-areas: "left center right";
+  grid-template-rows: auto;
+  grid-template-columns: auto 1fr auto;
+  height: rem(60px);
+  gap: var(--mantine-spacing-md);
+
   padding-left: var(--mantine-spacing-md);
   padding-right: var(--mantine-spacing-md);
   background-color: var(--mantine-color-secondary-0);
   width: 100%;
-
-  @media (max-width: $mantine-breakpoint-xl) {
-    grid-template-areas: "left center right";
-    grid-template-rows: auto;
-    grid-template-columns: auto 1fr auto;
-    height: rem(60px);
-    gap: var(--mantine-spacing-md);
-  }
 
   @media (max-width: $mantine-breakpoint-md) {
     grid-template-areas:
@@ -21,6 +19,16 @@
     grid-template-columns: auto 1fr;
     height: max-content;
     gap: var(--mantine-spacing-xs);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding-left: var(--mantine-spacing-xs);
+    padding-right: var(--mantine-spacing-xs);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-left: var(--mantine-spacing-sm);
+    padding-right: var(--mantine-spacing-sm);
   }
 }
 
@@ -46,10 +54,21 @@
 }
 
 .navbar {
-  padding-left: var(--mantine-spacing-md);
-  padding-right: var(--mantine-spacing-md);
   background: var(--mantine-color-secondary-1);
   height: rem(40px);
+
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding-left: var(--mantine-spacing-xs);
+    padding-right: var(--mantine-spacing-xs);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-left: var(--mantine-spacing-sm);
+    padding-right: var(--mantine-spacing-sm);
+  }
 }
 
 .menu {

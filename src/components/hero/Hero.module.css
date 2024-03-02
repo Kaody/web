@@ -1,0 +1,70 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.controlsWrapper {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  height: rem(250px);
+  justify-content: space-between;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding-left: var(--mantine-spacing-xs);
+    padding-right: var(--mantine-spacing-xs);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-left: var(--mantine-spacing-sm);
+    padding-right: var(--mantine-spacing-sm);
+  }
+}
+
+.control {
+  pointer-events: all;
+}
+
+.scroll {
+  position: absolute;
+  z-index: 1;
+  top: rem(250px);
+  width: 100%;
+}
+
+.categoriesWrapper {
+  width: 100%;
+  height: rem(350px);
+  padding-left: var(--mantine-spacing-lg);
+  padding-right: var(--mantine-spacing-lg);
+  background: rgb(227, 230, 230);
+  background: linear-gradient(
+    0deg,
+    rgba(227, 230, 230, 1) 0%,
+    rgba(227, 230, 230, 1) 24%,
+    rgba(227, 230, 230, 0.96) 46%,
+    rgba(227, 230, 230, 0.83) 70%,
+    rgba(227, 230, 230, 0.34) 90%,
+    rgba(227, 230, 230, 0) 100%
+  );
+  display: flex;
+  gap: var(--mantine-spacing-lg);
+  flex-wrap: nowrap;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    height: rem(180px);
+    padding-left: var(--mantine-spacing-sm);
+    padding-right: var(--mantine-spacing-sm);
+    gap: var(--mantine-spacing-sm);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding-left: var(--mantine-spacing-xs);
+    padding-right: var(--mantine-spacing-xs);
+    gap: var(--mantine-spacing-xs);
+  }
+}
