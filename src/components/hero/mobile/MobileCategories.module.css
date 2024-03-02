@@ -1,0 +1,10 @@
+.categories {
+  width: rem(315px);
+  height: 100%;
+  overflow: hidden;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: rem(135px);
+    height: rem(175px);
+  }
+}
