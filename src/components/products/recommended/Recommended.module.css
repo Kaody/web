@@ -1,0 +1,34 @@
+.section {
+  padding: var(--mantine-spacing-lg) var(--mantine-spacing-lg);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.article {
+  display: grid;
+  height: rem(310px);
+  width: rem(200px);
+  grid-template-areas:
+    "image"
+    "content";
+  grid-template-rows: rem(200px) auto;
+}
+
+.image {
+  grid-area: image;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mantine-color-gray-0);
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
