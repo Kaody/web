@@ -1,0 +1,25 @@
+.wrapper {
+  padding: var(--mantine-spacing-sm);
+}
+
+.itemWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: var(--mantine-spacing-lg);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    gap: var(--mantine-spacing-sm);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    gap: var(--mantine-spacing-xs);
+  }
+}
+
+.control {
+  &[data-inactive] {
+    opacity: 0;
+    cursor: default;
+  }
+}
