@@ -10,7 +10,10 @@ import { theme } from "@/theme";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Tsena Milay",
+  title: {
+    default: "Tsenamilay.mg",
+    template: "%s | Tsenamilay.mg",
+  },
   description: "Marketplace helping people to sell and buy products.",
 };
 
