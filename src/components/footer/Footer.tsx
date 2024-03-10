@@ -10,7 +10,7 @@ import { LogoHorizontal } from "@/components/logo";
 
 export function Footer() {
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <BackToTop />
 
       <div className={classes.content}>
@@ -37,6 +37,6 @@ export function Footer() {
           <Text size="xs">Powered by Airtel Madagascar</Text>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
