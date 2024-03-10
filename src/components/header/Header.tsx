@@ -2,7 +2,7 @@
 
 import classes from "./Header.module.css";
 
-import { Box, Burger, Group } from "@mantine/core";
+import { Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 import { Drawer } from "@/components/header/drawer";
@@ -17,8 +17,8 @@ export function Header() {
     useDisclosure(false);
 
   return (
-    <Box>
-      <header className={classes.header}>
+    <header>
+      <div className={classes.container}>
         <div className={classes.left}>
           <Burger
             opened={drawerOpened}
@@ -42,11 +42,11 @@ export function Header() {
           <Order />
           <Cart />
         </div>
-      </header>
+      </div>
 
       <NavBar drawerOpened={drawerOpened} toggleDrawer={toggleDrawer} />
 
       <Drawer drawerOpened={drawerOpened} closeDrawer={closeDrawer} />
-    </Box>
+    </header>
   );
 }
