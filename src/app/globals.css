@@ -10,7 +10,6 @@ a {
 }
 
 main {
-  background-color: rgb(227, 230, 230);
   @media (min-width: $mantine-breakpoint-xl) {
     align-content: center;
     max-width: rem(1500px);
