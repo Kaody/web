@@ -6,7 +6,11 @@ import { Recommended } from "@/components/products/recommended";
 
 export default async function Home() {
   return (
-    <main>
+    <main
+      style={{
+        backgroundColor: "rgb(227, 230, 230)",
+      }}
+    >
       <Hero />
       <News />
       <Promo />
