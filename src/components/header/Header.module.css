@@ -1,4 +1,4 @@
-.header {
+.container {
   display: grid;
   grid-template-areas: "left center right";
   grid-template-rows: auto;

@@ -1,32 +1,20 @@
-import classes from "./Flash.module.css";
+import classes from "./List.module.css";
 
-import { Box, Flex, Image, NumberFormatter, Rating, Text } from "@mantine/core";
+import { Image, NumberFormatter, Rating, Text } from "@mantine/core";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
-import { query } from "@/actions";
 import { Shelf } from "@/components/shelf";
-import {
-  GetProductsDocument,
-  GetProductsQuery,
-  GetProductsQueryVariables,
-} from "@/generated/graphql";
+import { GetProductsQuery } from "@/generated/graphql";
 
-export async function Flash() {
-  const { data, errors } = await query<
-    GetProductsQuery,
-    GetProductsQueryVariables
-  >({
-    query: GetProductsDocument,
-    variables: { input: { offset: 0 } },
-    fetchPolicy: "no-cache",
-  });
+interface Props {
+  title: string;
+  data: GetProductsQuery;
+}
 
-  if (!data || errors) return notFound();
-
+export async function List({ data, title }: Props) {
   return (
     <section className={classes.section}>
-      <Shelf title="Ventes Flash du Jour">
+      <Shelf title={title}>
         {data.getProducts.map((product) => (
           <Link key={product._id} href={`/product/${product._id}`}>
             <article className={classes.article}>
@@ -42,26 +30,6 @@ export async function Flash() {
                 />
               </div>
               <div className={classes.content}>
-                <Flex gap="xs" align="center">
-                  <Box
-                    style={{
-                      backgroundColor: "var(--mantine-primary-color-0)",
-                      padding: "0.1rem 0.5rem",
-                      borderRadius: "0.25rem",
-                    }}
-                  >
-                    <Text size="sm" c="var(--mantine-color-white)">
-                      -8%
-                    </Text>
-                  </Box>
-                  <Text
-                    size="sm"
-                    fw="bolder"
-                    c="var(--mantine-primary-color-0)"
-                  >
-                    Offre à durée limitée
-                  </Text>
-                </Flex>
                 <Text lineClamp={2} size="sm">
                   {product.name} Lorem ipsum, dolor sit amet consectetur
                   adipisicing elit. Quisquam laudantium similique molestiae

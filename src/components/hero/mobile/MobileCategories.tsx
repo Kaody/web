@@ -31,7 +31,7 @@ export function MobileCategories() {
             width={135}
             height={135}
             style={{
-              objectFit: "cover",
+              objectFit: "scale-down",
             }}
           />
         </Paper>

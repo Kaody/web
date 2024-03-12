@@ -74,7 +74,7 @@ export function DesktopCategories() {
                   width={135}
                   height={120}
                   style={{
-                    objectFit: "cover",
+                    objectFit: "scale-down",
                   }}
                 />
                 <Text key={subCategory.id} truncate="end" size="xs">

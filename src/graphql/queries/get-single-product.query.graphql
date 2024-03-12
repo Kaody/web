@@ -1,0 +1,20 @@
+query getSingleProduct($input: GetProductInput!) {
+  getProduct(input: $input) {
+    name
+    description
+    price
+    quantity
+    status
+    category {
+      name
+    }
+    attributes {
+      name
+      value
+    }
+    store {
+      name
+      _id
+    }
+  }
+}

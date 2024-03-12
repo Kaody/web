@@ -1,0 +1,67 @@
+/* reviews section */
+
+.section {
+  padding: var(--mantine-spacing-md);
+  display: grid;
+  gap: var(--mantine-spacing-xl);
+
+  margin-bottom: var(--mantine-spacing-xl);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: 0;
+  }
+}
+
+.reviewsbox {
+  display: grid;
+  grid-template-areas: "rating reviews";
+  grid-template-columns: minmax(auto, rem(300px)) 1fr;
+  gap: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    grid-template-areas:
+      "rating"
+      "reviews";
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: 0 var(--mantine-spacing-sm);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding: 0 var(--mantine-spacing-xs);
+  }
+}
+
+.rating {
+  grid-area: rating;
+  display: grid;
+  gap: var(--mantine-spacing-sm);
+  align-self: flex-start;
+}
+
+.reviews {
+  grid-area: reviews;
+  display: flex;
+  align-self: self-start;
+  @media (max-width: $mantine-breakpoint-md) {
+    display: block;
+  }
+}
+
+.blankdiv {
+  width: 9.5%;
+  max-width: 120px;
+  @media (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}
+
+.review {
+  display: grid;
+  gap: rem(2px);
+}
+
+/* --- views section --- */
