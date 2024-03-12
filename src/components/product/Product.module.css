@@ -6,9 +6,7 @@
   grid-template-columns: rem(400px) 1fr rem(250px);
   gap: var(--mantine-spacing-md);
 
-  padding-top: var(--mantine-spacing-md);
-  padding-left: var(--mantine-spacing-md);
-  padding-right: var(--mantine-spacing-md);
+  padding: var(--mantine-spacing-md);
 
   @media (max-width: $mantine-breakpoint-md) {
     grid-template-areas:
