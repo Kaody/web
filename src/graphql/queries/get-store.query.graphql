@@ -1,0 +1,7 @@
+query getOneStore($input: GetStoreDetailsInput!) {
+  getOneStore(input: $input) {
+    _id
+    name
+    description
+  }
+}

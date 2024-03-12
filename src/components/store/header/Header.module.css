@@ -1,0 +1,49 @@
+.cover {
+  width: 100%;
+  max-height: rem(300px);
+  overflow: hidden;
+}
+
+.profile {
+  width: rem(115px);
+  height: rem(75px);
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: rem(75px);
+  }
+}
+
+.image {
+  object-fit: fill;
+  object-position: top center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: rem(100px);
+  background-color: white;
+  position: sticky;
+  top: 0;
+  border-bottom: 5px solid #d5dbdb;
+  box-sizing: border-box;
+  box-shadow: var(--mantine-shadow-xs);
+  padding: rem(2px) var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: var(--mantine-spacing-sm);
+    gap: var(--mantine-spacing-xs);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding: var(--mantine-spacing-xs);
+  }
+}
+
+.nav {
+  display: grid;
+  gap: var(--mantine-spacing-xs);
+}
