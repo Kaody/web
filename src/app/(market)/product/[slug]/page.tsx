@@ -7,8 +7,11 @@ import {
   HeaderBox,
   ImagesBox,
   OverviewBox,
+  ReviewsBox,
   Wrapper,
 } from "@/components/product";
+import { Recommended } from "@/components/products/recommended";
+import { Similar } from "@/components/products/similar";
 import {
   GetSingleProductDocument,
   GetSingleProductQuery,
@@ -57,11 +60,16 @@ export default async function Page({ params }: Props) {
   if (!data || errors) return notFound();
 
   return (
-    <Wrapper>
-      <ImagesBox />
-      <HeaderBox data={data} />
-      <OverviewBox data={data} />
-      <BuyBox data={data} />
-    </Wrapper>
+    <main>
+      <Wrapper>
+        <ImagesBox />
+        <HeaderBox data={data} />
+        <OverviewBox data={data} />
+        <BuyBox data={data} />
+      </Wrapper>
+      <Similar />
+      <Recommended />
+      <ReviewsBox />
+    </main>
   );
 }
