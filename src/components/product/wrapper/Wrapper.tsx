@@ -8,10 +8,8 @@ interface WrapperProps {
 
 export function Wrapper(props: WrapperProps) {
   return (
-    <main>
-      <Paper radius={0} className={classes.wrapper}>
-        {props.children}
-      </Paper>
-    </main>
+    <Paper radius={0} className={classes.wrapper}>
+      {props.children}
+    </Paper>
   );
 }
