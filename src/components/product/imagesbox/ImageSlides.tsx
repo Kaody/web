@@ -24,7 +24,7 @@ function ImageSlides({ images }: Props) {
           alt={`${active}`}
           width="100%"
           height="100%"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "scale-down" }}
         />
       </Portal>
 
@@ -50,7 +50,7 @@ function ImageSlides({ images }: Props) {
               alt={`${image.id}`}
               width="100%"
               height="100%"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "scale-down" }}
             />
           </Box>
         </Carousel.Slide>

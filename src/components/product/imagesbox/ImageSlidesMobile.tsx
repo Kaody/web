@@ -20,7 +20,7 @@ function ImageSlidesMobile({ images }: Props) {
             alt={`${image.id}`}
             width="100%"
             height="100%"
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "scale-down" }}
           />
         </Carousel.Slide>
       ))}
