@@ -34,10 +34,10 @@ export async function News() {
                 <Image
                   src="https://placehold.co/135x135"
                   alt={product.name}
-                  width={135}
-                  height={135}
                   style={{
-                    objectFit: "cover",
+                    width: 135,
+                    height: 135,
+                    objectFit: "scale-down",
                   }}
                 />
               </div>

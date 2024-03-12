@@ -34,10 +34,10 @@ export async function Promo() {
                 <Image
                   src="https://placehold.co/200x200"
                   alt={product.name}
-                  width={200}
-                  height={200}
                   style={{
-                    objectFit: "cover",
+                    objectFit: "scale-down",
+                    width: 200,
+                    height: 200,
                   }}
                 />
               </div>
