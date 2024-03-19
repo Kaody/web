@@ -5,6 +5,7 @@ import {
   ApolloError,
   DefaultContext,
   MutationOptions,
+  NetworkStatus,
   OperationVariables,
   QueryOptions,
 } from "@apollo/client";
@@ -17,13 +18,17 @@ export async function query<
 >(options: QueryOptions<TVariables, TQuery>) {
   let res: {
     data?: TQuery;
-    errors?: ApolloError;
+    loading: boolean;
+    error?: ApolloError;
+    networkStatus?: NetworkStatus;
+    partial?: boolean;
   };
   try {
-    const { data } = await getClient().query<TQuery, TVariables>(options);
-    res = { data };
+    const { data, loading, networkStatus, error, partial } =
+      await getClient().query<TQuery, TVariables>(options);
+    res = { data, loading, error, networkStatus, partial };
   } catch (error) {
-    res = { errors: error as ApolloError };
+    res = { error: error as ApolloError, loading: false };
   }
   return res;
 }
