@@ -1,16 +1,24 @@
+import { Title } from "@mantine/core";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
 import { query } from "@/actions";
+import { NetworkError } from "@/components/error";
 import { Header } from "@/components/store";
 import {
   GetOneStoreDocument,
   GetOneStoreQuery,
   GetOneStoreQueryVariables,
 } from "@/generated/graphql";
-import { Title } from "@mantine/core";
 
-/* export const dynamic = "force-dynamic"; */
+export const dynamic = "force-dynamic";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { data, errors } = await query<
+type Props = {
+  params: { id: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { data, error } = await query<
     GetOneStoreQuery,
     GetOneStoreQueryVariables
   >({
@@ -18,18 +26,34 @@ export default async function Page({ params }: { params: { id: string } }) {
     variables: { input: { store_id: params.id } },
     fetchPolicy: "no-cache",
   });
-  if (!data || errors) {
-    return (
-      <>
-        {errors?.graphQLErrors.map(({ extensions }, i) => (
-          <span key={i}>
-            {(extensions.originalError as { message: string }).message}
-          </span>
-        ))}
-        {errors?.networkError?.message}
-      </>
-    );
-  }
+
+  return {
+    title: {
+      absolute:
+        error && error.networkError
+          ? "Erreur de chargement"
+          : data
+          ? data.getOneStore.name
+          : "Boutique non trouvée",
+    },
+  };
+}
+
+export default async function Page({ params }: { params: { id: string } }) {
+  const { data, error } = await query<
+    GetOneStoreQuery,
+    GetOneStoreQueryVariables
+  >({
+    query: GetOneStoreDocument,
+    variables: { input: { store_id: params.id } },
+    fetchPolicy: "no-cache",
+  });
+
+  if (error && error.networkError)
+    return <NetworkError message={error.message} />;
+
+  if (!data) notFound();
+
   return (
     <main>
       <Header data={data} />
