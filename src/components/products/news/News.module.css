@@ -22,6 +22,8 @@
   align-items: center;
   justify-content: center;
   background-color: var(--mantine-color-gray-0);
+  width: rem(135px);
+  height: rem(135px);
 }
 
 .content {
