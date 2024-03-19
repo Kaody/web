@@ -5,6 +5,7 @@ query getSingleProduct($input: GetProductInput!) {
     price
     quantity
     status
+    images
     category {
       name
     }
