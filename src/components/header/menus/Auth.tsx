@@ -1,18 +1,18 @@
-import { Flex, Group, Text, UnstyledButton } from "@mantine/core";
+import { useQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+
+import { MeDocument, MeQuery, MeQueryVariables } from "@/generated/graphql";
+import { AuthSm } from "./AuthSm";
+import { AuthXs } from "./AuthXs";
 
 export function Auth() {
+  const { data, loading } = useQuery<MeQuery, MeQueryVariables>(MeDocument, {
+    fetchPolicy: "no-cache",
+  });
+
   return (
-    <UnstyledButton visibleFrom="sm">
-      <Group gap={2}>
-        <Flex direction="column" justify="center">
-          <Text size="xs" c="var(--mantine-color-gray-2)">
-            Bonjour, Identifiez-vous
-          </Text>
-          <Text c="var(--mantine-color-white)" fw="bolder" size="xs">
-            Compte et listes
-          </Text>
-        </Flex>
-      </Group>
-    </UnstyledButton>
+    <>
+      <AuthSm data={data} loading={loading} />
+      <AuthXs data={data} loading={loading} />
+    </>
   );
 }
