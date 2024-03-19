@@ -13,9 +13,7 @@ export function HeaderBox({ data }: Props) {
   return (
     <div className={classes.headerbox}>
       <Title order={2} fw="lighter" className={classes.title}>
-        {data.getProduct.name} Lorem ipsum dolor, sit amet consectetur
-        adipisicing elit. Tempora, dolorem? Sit maxime in sapiente,
-        exercitationem voluptatibus autem? Accusantium amet.
+        {data.getProduct.name}
       </Title>
       <Text c="var(--mantine-color-secondary-2)" size="sm">
         <Link
