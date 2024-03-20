@@ -1,19 +1,17 @@
+import { getProductImages } from "@/actions/action";
 import { ImagesBoxDesktop } from "./ImagesBoxDesktop";
 import { ImagesBoxMobile } from "./ImagesBoxMobile";
 
-const productsImages = [
-  { id: 0, src: "https://placehold.co/64x64" },
-  { id: 1, src: "https://placehold.co/64x64" },
-  { id: 2, src: "https://placehold.co/64x64" },
-  { id: 3, src: "https://placehold.co/64x64" },
-  { id: 4, src: "https://placehold.co/64x64" },
-];
+interface Props {
+  images: string[] | any;
+}
 
-export function ImagesBox() {
+export async function ImagesBox({ images }: Props) {
+  const data = await getProductImages(images);
   return (
     <>
-      <ImagesBoxMobile images={productsImages} />
-      <ImagesBoxDesktop images={productsImages} />
+      <ImagesBoxMobile images={data} />
+      <ImagesBoxDesktop images={data} />
     </>
   );
 }

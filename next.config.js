@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   async rewrites() {
     const BASE_URL = process.env.API_BASE_URL;
     const API_PATH = process.env.NEXT_PUBLIC_API_PATH;

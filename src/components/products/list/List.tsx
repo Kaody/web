@@ -1,8 +1,10 @@
 import classes from "./List.module.css";
 
-import { Image, NumberFormatter, Rating, Text } from "@mantine/core";
+import { NumberFormatter, Rating, Text } from "@mantine/core";
 import Link from "next/link";
+import { Suspense } from "react";
 
+import { RetreiveImageBox } from "@/components/product/imagesbox/RetreiveImageBox";
 import { Shelf } from "@/components/shelf";
 import { GetProductsQuery } from "@/generated/graphql";
 
@@ -19,23 +21,13 @@ export async function List({ data, title }: Props) {
           <Link key={product._id} href={`/product/${product._id}`}>
             <article className={classes.article}>
               <div className={classes.image}>
-                <Image
-                  src="https://placehold.co/200x200"
-                  alt={product.name}
-                  style={{
-                    objectFit: "scale-down",
-                    width: 200,
-                    height: 200,
-                  }}
-                />
+                <Suspense key={product.name} fallback={<p>chargement...</p>}>
+                  <RetreiveImageBox imagekeys={product.images} />
+                </Suspense>
               </div>
               <div className={classes.content}>
                 <Text lineClamp={2} size="sm">
-                  {product.name} Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Quisquam laudantium similique molestiae
-                  quidem quos quaerat. Ex quas, officia aliquid eius quisquam
-                  suscipit. Eligendi atque velit corporis porro modi. Minima,
-                  consectetur.
+                  {product.name}
                 </Text>
                 <Rating defaultValue={4.5} fractions={2} />
                 <NumberFormatter

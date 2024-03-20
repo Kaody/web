@@ -6,7 +6,7 @@ import { Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 import { Drawer } from "@/components/header/drawer";
-import { Auth, AuthXs, Cart, Order } from "@/components/header/menus";
+import { Auth, Cart, Order } from "@/components/header/menus";
 import { NavBar } from "@/components/header/navbar";
 import { Location } from "@/components/location";
 import { Logo } from "@/components/logo";
@@ -38,7 +38,6 @@ export function Header() {
         </div>
         <div className={classes.right}>
           <Auth />
-          <AuthXs />
           <Order />
           <Cart />
         </div>

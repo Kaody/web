@@ -5,6 +5,7 @@ query getProducts($input: GetProductsInput!) {
     price
     quantity
     status
+    images
     tags
     attributes {
       name

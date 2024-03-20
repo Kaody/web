@@ -6,18 +6,28 @@ import {
   GetProductsQueryVariables,
 } from "@/generated/graphql";
 
-export async function Similar() {
-  const { data } = await query<GetProductsQuery, GetProductsQueryVariables>({
+interface Props {
+  category: string;
+}
+
+export async function Similar({ category }: Props) {
+  const { data, error } = await query<
+    GetProductsQuery,
+    GetProductsQueryVariables
+  >({
     query: GetProductsDocument,
     variables: { input: { offset: 0 } },
     fetchPolicy: "no-cache",
   });
 
-  return (
-    <>
-      {data && data.getProducts ? (
-        <List data={data} title="Produits liés à cet article" />
-      ) : null}
-    </>
-  );
+  if (!data)
+    return (
+      <>
+        {error && (
+          <pre>ApolloError: {JSON.stringify(error.networkError?.message)}</pre>
+        )}
+      </>
+    );
+
+  return <List data={data} title="Produits liés à cet article" />;
 }

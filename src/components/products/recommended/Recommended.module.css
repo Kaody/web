@@ -23,6 +23,8 @@
   align-items: center;
   justify-content: center;
   background-color: var(--mantine-color-gray-0);
+  width: rem(200px);
+  height: rem(200px);
 }
 
 .content {

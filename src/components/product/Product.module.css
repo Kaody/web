@@ -37,6 +37,7 @@
   align-self: self-start;
   position: sticky;
   top: var(--mantine-spacing-md);
+  min-height: rem(336px);
   height: fit-content;
 
   @media (max-width: $mantine-breakpoint-md) {

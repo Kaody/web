@@ -1,10 +1,11 @@
 import classes from "./Recommended.module.css";
 
-import { Image, NumberFormatter, Rating, Text } from "@mantine/core";
+import { NumberFormatter, Rating, Text } from "@mantine/core";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import { query } from "@/actions";
+import { RetreiveImageBox } from "@/components/product";
 import { Shelf } from "@/components/shelf";
 import {
   GetProductsDocument,
@@ -13,7 +14,7 @@ import {
 } from "@/generated/graphql";
 
 export async function Recommended() {
-  const { data, errors } = await query<
+  const { data, error } = await query<
     GetProductsQuery,
     GetProductsQueryVariables
   >({
@@ -22,7 +23,14 @@ export async function Recommended() {
     fetchPolicy: "no-cache",
   });
 
-  if (!data || errors) return notFound();
+  if (!data)
+    return (
+      <>
+        {error && (
+          <pre>ApolloError: {JSON.stringify(error.networkError?.message)}</pre>
+        )}
+      </>
+    );
 
   return (
     <section className={classes.section}>
@@ -31,23 +39,13 @@ export async function Recommended() {
           <Link key={product._id} href={`/product/${product._id}`}>
             <article className={classes.article}>
               <div className={classes.image}>
-                <Image
-                  src="https://placehold.co/200x200"
-                  alt={product.name}
-                  style={{
-                    objectFit: "scale-down",
-                    width: 200,
-                    height: 200,
-                  }}
-                />
+                <Suspense key={product.name} fallback={<p>chargement...</p>}>
+                  <RetreiveImageBox imagekeys={product.images} />
+                </Suspense>
               </div>
               <div className={classes.content}>
                 <Text lineClamp={2} size="sm">
-                  {product.name} Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Quisquam laudantium similique molestiae
-                  quidem quos quaerat. Ex quas, officia aliquid eius quisquam
-                  suscipit. Eligendi atque velit corporis porro modi. Minima,
-                  consectetur.
+                  {product.name}
                 </Text>
                 <Rating defaultValue={4.5} fractions={2} />
                 <Text size="xs" truncate>

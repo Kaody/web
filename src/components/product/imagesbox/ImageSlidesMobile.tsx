@@ -5,8 +5,8 @@ import { Image } from "@mantine/core";
 
 interface Props {
   images: {
-    id: number;
-    src: string;
+    key: string;
+    url: string;
   }[];
 }
 
@@ -14,10 +14,10 @@ function ImageSlidesMobile({ images }: Props) {
   return (
     <>
       {images.map((image) => (
-        <Carousel.Slide key={image.id}>
+        <Carousel.Slide key={image.key}>
           <Image
-            src={image.src}
-            alt={`${image.id}`}
+            src={image.url}
+            alt={`${image.key}`}
             width="100%"
             height="100%"
             style={{ objectFit: "scale-down" }}

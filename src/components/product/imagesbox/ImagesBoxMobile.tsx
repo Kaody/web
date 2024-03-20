@@ -7,10 +7,13 @@ import { Box } from "@mantine/core";
 import ImageSlidesMobile from "./ImageSlidesMobile";
 
 interface Props {
-  images: { id: number; src: string }[];
+  images: {
+    key: string;
+    url: string;
+  }[];
 }
 
-export function ImagesBoxMobile({ images }: Props) {
+export async function ImagesBoxMobile({ images }: Props) {
   return (
     <Box className={classes.imagebox} hiddenFrom="md">
       <Carousel withIndicators height={400} withControls={false}>

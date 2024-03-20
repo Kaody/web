@@ -1,9 +1,8 @@
 import { HttpLink } from "@apollo/client";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
-import { jwtDecode } from "jwt-decode";
-import { cookies } from "next/headers";
 
-import { getAccessToken, setAccessToken } from "@/constants/access-token";
+import { setAccessToken } from "@/constants/access-token";
+import { isAuthenticatedVar } from "@/constants/authenticated";
 import { IJwtPayload } from "@/constants/jwt-payload";
 
 const BASE_URL = process.env.API_BASE_URL;
@@ -18,33 +17,34 @@ export const rscHttpLink = new HttpLink({
 export const rscTokenRefreshLink = new TokenRefreshLink({
   accessTokenField: "access_token",
   isTokenValidOrUndefined: async () => {
-    const token = getAccessToken();
-    if (!token) return false;
     try {
-      const { exp } = jwtDecode<IJwtPayload>(token);
-      if (Math.round(Date.now() / 1000) + 31 >= exp) {
-        return false;
-      } else {
+      const res = await fetch(
+        `${BASE_URL}${API_PATH}/auth/verify-access-token`,
+        {
+          method: "POST",
+          credentials: "same-origin",
+          cache: "no-store",
+        }
+      );
+      const decodedToken: IJwtPayload = await res.json();
+      if (decodedToken.sub) {
         return true;
+      } else {
+        return false;
       }
     } catch (err) {
       return false;
     }
   },
   fetchAccessToken: () => {
-    const refreshToken = cookies().get(
-      process.env.REFRESH_TOKEN_COOKIE_NAME as string
-    );
     return fetch(`${BASE_URL}${API_PATH}/auth/refresh-token`, {
       method: "POST",
       credentials: "same-origin",
-      headers: {
-        "refresh-token": `${refreshToken?.value as string}`,
-      },
       cache: "no-store",
     });
   },
   handleFetch: (access_token) => {
+    isAuthenticatedVar(true);
     setAccessToken(access_token);
   },
   handleError: (err) => {

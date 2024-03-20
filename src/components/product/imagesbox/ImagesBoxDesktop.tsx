@@ -7,10 +7,10 @@ import { Box } from "@mantine/core";
 import ImageSlides from "./ImageSlides";
 
 interface Props {
-  images: { id: number; src: string }[];
+  images: { key: string; url: string }[];
 }
 
-export function ImagesBoxDesktop({ images }: Props) {
+export async function ImagesBoxDesktop({ images }: Props) {
   return (
     <Box className={classes.imagebox} visibleFrom="md">
       {/* preview product image here */}

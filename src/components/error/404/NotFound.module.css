@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: var(--mantine-spacing-sm);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding: var(--mantine-spacing-xs);
+  }
+}

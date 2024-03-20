@@ -21,7 +21,7 @@ export function SearchByCategory({ boxFocused }: { boxFocused: boolean }) {
 
   const { ref, focused } = useFocusWithin();
 
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string>(categories[0]);
 
   const options = categories.map((category) => (
     <Combobox.Option value={category} key={category}>

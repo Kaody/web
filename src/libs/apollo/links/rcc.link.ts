@@ -1,8 +1,7 @@
 import { HttpLink } from "@apollo/client";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
-import { jwtDecode } from "jwt-decode";
 
-import { getAccessToken, setAccessToken } from "@/constants/access-token";
+import { setAccessToken } from "@/constants/access-token";
 import { isAuthenticatedVar } from "@/constants/authenticated";
 import { IJwtPayload } from "@/constants/jwt-payload";
 
@@ -18,14 +17,17 @@ export const rccHttpLink = new HttpLink({
 export const rccTokenRefreshLink = new TokenRefreshLink({
   accessTokenField: "access_token",
   isTokenValidOrUndefined: async () => {
-    const token = getAccessToken();
-    if (!token) return false;
     try {
-      const { exp } = jwtDecode<IJwtPayload>(token);
-      if (Math.round(Date.now() / 1000) + 31 >= exp) {
-        return false;
-      } else {
+      const res = await fetch(`${API_PATH}/auth/verify-access-token`, {
+        method: "POST",
+        credentials: "same-origin",
+        cache: "no-store",
+      });
+      const decodedToken: IJwtPayload = await res.json();
+      if (decodedToken.sub) {
         return true;
+      } else {
+        return false;
       }
     } catch (err) {
       return false;
