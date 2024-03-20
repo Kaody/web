@@ -1,7 +1,10 @@
-# compiled output
-.next
-.vscode
+# Docker
+Dockerfile
+.dockerignore
+
+# Compiled output
 node_modules
+.next
 
 # Logs
 logs
@@ -12,12 +15,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Git
-.git
-.gitignore
-
 # Markdown
 *.md
 
-# Env
-.env*
+# Git
+.git
+.gitignore

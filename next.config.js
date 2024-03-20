@@ -1,3 +1,5 @@
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
@@ -15,6 +17,13 @@ const nextConfig = {
         destination: `${BASE_URL}${GRAPHQL_PATH}/:path*`,
       },
     ];
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(__dirname, "./src/"),
+    };
+    return config;
   },
 };
 
